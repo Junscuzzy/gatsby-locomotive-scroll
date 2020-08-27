@@ -20,6 +20,9 @@ const makeTheme = (variant: ThemeOptions): Theme => {
         main: red.A400,
       },
     },
+    typography: {
+      htmlFontSize: 14,
+    },
   }
 
   const theme = createMuiTheme(deepMerge(common, variant))
