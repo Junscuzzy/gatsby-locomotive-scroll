@@ -10,6 +10,15 @@ import {
 const makeTheme = (variant: ThemeOptions): Theme => {
   const common = {
     palette: {
+      common: {
+        black: '#222',
+        white: '#fff',
+      },
+      divider: '#222',
+      text: { primary: '#222' },
+      background: {
+        default: '#D4C9C9',
+      },
       primary: {
         main: '#542c85',
       },
@@ -22,6 +31,7 @@ const makeTheme = (variant: ThemeOptions): Theme => {
     },
     typography: {
       htmlFontSize: 14,
+      fontFamily: "'Lato', sans-serif",
     },
   }
 

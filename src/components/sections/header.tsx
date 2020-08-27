@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
   },
   h1: {
-    fontSize: 172,
+    fontSize: '12vw',
+    fontWeight: 400,
     textTransform: 'uppercase',
     lineHeight: 0.9,
     marginBottom: theme.spacing(6),
@@ -22,6 +23,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 
     '& span': {
       display: 'inline-block',
+    },
+    '& .version span': {
+      color: theme.palette.common.white,
     },
   },
 }))
@@ -44,17 +48,35 @@ const Header = () => {
               Scroll
             </span>
             <br />
-            <span data-scroll data-scroll-speed="3" data-scroll-position="top">
-              V
-            </span>
-            <span data-scroll data-scroll-speed="5" data-scroll-position="top">
-              3
-            </span>
-            <span data-scroll data-scroll-speed="2" data-scroll-position="top">
-              .
-            </span>
-            <span data-scroll data-scroll-speed="4" data-scroll-position="top">
-              0
+            <span className="version">
+              <span
+                data-scroll
+                data-scroll-speed="3"
+                data-scroll-position="top"
+              >
+                V
+              </span>
+              <span
+                data-scroll
+                data-scroll-speed="5"
+                data-scroll-position="top"
+              >
+                3
+              </span>
+              <span
+                data-scroll
+                data-scroll-speed="2"
+                data-scroll-position="top"
+              >
+                .
+              </span>
+              <span
+                data-scroll
+                data-scroll-speed="4"
+                data-scroll-position="top"
+              >
+                0
+              </span>
             </span>
           </Typography>
         </Box>
