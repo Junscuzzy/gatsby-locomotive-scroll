@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Theme, Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
-import { ScrollSection } from '../locomotive-scroll'
 import Container from '../container'
+import Navbar from '../Navbar'
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
@@ -30,58 +30,40 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-const Header = () => {
+const Header: FC = () => {
   const classes = useStyles()
 
   return (
-    <ScrollSection>
-      <Container>
-        <Box className={classes.header}>
-          <div>Navbar area</div>
+    <Container data-scroll-section>
+      <Box className={classes.header}>
+        <Navbar />
 
-          <Typography variant="h1" color="textPrimary" className={classes.h1}>
+        <Typography variant="h1" color="textPrimary" className={classes.h1}>
+          <span data-scroll data-scroll-speed="3" data-scroll-position="top">
+            Locomotive
+          </span>
+          <br />
+          <span data-scroll data-scroll-speed="2" data-scroll-position="top">
+            Scroll
+          </span>
+          <br />
+          <span className="version">
             <span data-scroll data-scroll-speed="3" data-scroll-position="top">
-              Locomotive
+              V
             </span>
-            <br />
+            <span data-scroll data-scroll-speed="5" data-scroll-position="top">
+              3
+            </span>
             <span data-scroll data-scroll-speed="2" data-scroll-position="top">
-              Scroll
+              .
             </span>
-            <br />
-            <span className="version">
-              <span
-                data-scroll
-                data-scroll-speed="3"
-                data-scroll-position="top"
-              >
-                V
-              </span>
-              <span
-                data-scroll
-                data-scroll-speed="5"
-                data-scroll-position="top"
-              >
-                3
-              </span>
-              <span
-                data-scroll
-                data-scroll-speed="2"
-                data-scroll-position="top"
-              >
-                .
-              </span>
-              <span
-                data-scroll
-                data-scroll-speed="4"
-                data-scroll-position="top"
-              >
-                0
-              </span>
+            <span data-scroll data-scroll-speed="4" data-scroll-position="top">
+              0
             </span>
-          </Typography>
-        </Box>
-      </Container>
-    </ScrollSection>
+          </span>
+        </Typography>
+      </Box>
+    </Container>
   )
 }
 

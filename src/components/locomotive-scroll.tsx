@@ -1,57 +1,38 @@
-import React, { useEffect, useRef, FC } from 'react'
+import { useEffect, FC } from 'react'
 
-import LocomotiveScroll from 'locomotive-scroll'
+import { LocomotiveScrollInterface } from '../interfaces'
 
 import './locomotive-scroll.css'
 
-const Scroll: FC = ({ children }) => {
-  const scrollRef = useRef(null)
+import LocomotiveScroll from 'locomotive-scroll'
 
+const Scroll: FC<any> = callbacks => {
   useEffect(() => {
-    const scroll: any = new LocomotiveScroll({
-      // https://github.com/locomotivemtl/locomotive-scroll#instance-options
-      el: scrollRef.current,
+    if (typeof window === 'undefined') return
+
+    const locomotiveScroll: LocomotiveScrollInterface = new LocomotiveScroll({
+      el: document.querySelector('#___gatsby'),
       smooth: true,
       smoothMobile: false,
+      getDirection: true,
+    })
+
+    locomotiveScroll.update()
+
+    // Exposing to the global scope for ease of use.
+    window.locomotive = locomotiveScroll
+
+    locomotiveScroll.on('scroll', func => {
+      // Update `data-direction` with scroll direction.
+      document.documentElement.setAttribute('data-direction', func.direction)
     })
 
     return () => {
-      if (scroll) scroll.destroy()
+      if (locomotiveScroll) locomotiveScroll.destroy()
     }
-  }, [])
+  }, [callbacks])
 
-  return (
-    <div
-      style={{
-        padding: '0 0 200vh',
-        minHeight: `100vh`,
-      }}
-      ref={scrollRef}
-    >
-      {children}
-    </div>
-  )
+  return null
 }
 
-// Note: scroll-sections are optional
-// but recommended to improve performance,
-// particularly in long pages.
-export const ScrollSection: FC = ({ children }) => (
-  <section data-scroll-section>{children}</section>
-)
-
 export default Scroll
-
-// scroll.update()
-
-// // Exposing to the global scope for ease of use.
-// window.scroll = locomotiveScroll
-
-// locomotiveScroll.on('scroll', func => {
-//   // Update `data-direction` with scroll direction.
-//   document.documentElement.setAttribute('data-direction', func.direction)
-// })
-
-// return () => {
-//   if (locomotiveScroll) locomotiveScroll.destroy()
-// }

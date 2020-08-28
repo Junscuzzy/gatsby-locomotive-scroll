@@ -1,5 +1,5 @@
 declare module 'locomotive-scroll' {
-  export = any
+  export = LocomotiveScrollInterface
 }
 
 declare module '*.jpg'
