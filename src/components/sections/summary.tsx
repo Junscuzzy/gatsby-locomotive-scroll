@@ -51,7 +51,7 @@ const Summary = () => {
 
   return (
     <Container data-scroll-section>
-      <Box mb={24}>
+      <Box mb={12}>
         <Divider />
         <Box pt={8} />
         <Box className={classes.flex}>
