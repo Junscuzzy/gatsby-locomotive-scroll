@@ -2,16 +2,14 @@ import React, { FC } from 'react'
 import { makeStyles, ThemeProvider } from '@material-ui/styles'
 import { Theme } from '@material-ui/core'
 import { useSelector } from 'react-redux'
-import loadable from '@loadable/component'
 
 import themes from '../theme'
 import { RootState } from '../redux/store'
 
-const Scroll = loadable(() => import('./locomotive-scroll'))
-
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
+    padding: '0 0 200vh',
   },
 }))
 
@@ -20,8 +18,6 @@ const LayoutComponent: FC<{ location: Location }> = props => {
 
   return (
     <>
-      {typeof window !== 'undefined' && <Scroll callbacks={props.location} />}
-
       <main className={classes.root}>{props.children}</main>
     </>
   )

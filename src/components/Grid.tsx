@@ -6,13 +6,23 @@ const Grid: FC<{ left: ReactNode; right: ReactNode; gridProps?: BoxProps }> = ({
   left,
   right,
   gridProps,
-}) => (
-  <Box display="flex" justifyContent="space-between" {...gridProps}>
-    <Box width="40%">{left}</Box>
-    <Box width="60%" pl={6}>
-      {right}
+}) => {
+  const common = { position: 'relative' }
+  return (
+    <Box
+      {...common}
+      display="flex"
+      justifyContent="space-between"
+      {...gridProps}
+    >
+      <Box {...common} width="40%">
+        {left}
+      </Box>
+      <Box {...common} width="60%" pl={6}>
+        {right}
+      </Box>
     </Box>
-  </Box>
-)
+  )
+}
 
 export default Grid

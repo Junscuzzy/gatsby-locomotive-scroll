@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Theme, Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
-import Container from '../container'
+import Container from '../../container'
 import Navbar from '../Navbar'
 
 const Logo = () => (
