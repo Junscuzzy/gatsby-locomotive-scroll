@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Theme, Box, Typography, Divider } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
@@ -8,9 +8,43 @@ import ScrollLink from '../ScrollLink'
 const useStyles = makeStyles((theme: Theme) => ({
   flex: { display: 'flex' },
   left: { width: `40%` },
-  right: { width: `60%`, paddingLeft: theme.spacing(6) },
+  right: { width: `60%`, paddingLeft: theme.spacing(6), listStyle: 'none' },
   text: { fontWeight: 700, maxWidth: 320 },
+
+  summaryLink: {
+    fontWeight: 700,
+    display: 'flex',
+    justifyContent: 'space-between',
+    transition: 'color .3s cubic-bezier(.215,.61,.355,1)',
+    color: theme.palette.common.black,
+
+    '&:hover': {
+      textDecoration: 'none',
+      cursor: 'pointer',
+      color: theme.palette.common.white,
+    },
+  },
 }))
+
+const SummaryLink: FC<{ title: string; to: string }> = ({ title, to }) => {
+  const classes = useStyles()
+  return (
+    <Box marginBottom={1}>
+      <Typography variant="h5" gutterBottom>
+        <ScrollLink
+          to={to}
+          className={classes.summaryLink}
+          color="inherit"
+          offset={-100}
+        >
+          <span>{title}</span>
+          <span style={{ fontSize: 12, margin: 'auto 0 auto auto' }}>↓</span>
+        </ScrollLink>
+      </Typography>
+      <Divider />
+    </Box>
+  )
+}
 
 const Summary = () => {
   const classes = useStyles()
@@ -29,32 +63,12 @@ const Summary = () => {
               triggering event listeners when elements are in the viewport.
             </Typography>
           </Box>
-          <Box className={classes.right}>
-            <Typography variant="h4" color="textPrimary" gutterBottom>
-              <ScrollLink to="speed-control" color="inherit" offset={-100}>
-                01. SPEED CONTROL
-              </ScrollLink>
-              <Divider />
-            </Typography>
-            <Typography variant="h4" color="textPrimary" gutterBottom>
-              <ScrollLink to="scroll-direction" color="inherit">
-                02. SCROLL DIRECTION
-              </ScrollLink>
-              <Divider />
-            </Typography>
-            <Typography variant="h4" color="textPrimary" gutterBottom>
-              <ScrollLink to="lerp-effect" color="inherit">
-                03. LERP EFFECT
-              </ScrollLink>
-              <Divider />
-            </Typography>
-            <Typography variant="h4" color="textPrimary" gutterBottom>
-              <ScrollLink to="fixed-elements" color="inherit">
-                04. FIXED ELEMENTS
-              </ScrollLink>
-              <Divider />
-            </Typography>
-          </Box>
+          <div className={classes.right}>
+            <SummaryLink title="01. SPEED CONTROL" to="speed-control" />
+            <SummaryLink title="02. SCROLL DIRECTION" to="scroll-direction" />
+            <SummaryLink title="03. LERP EFFECT" to="lerp-effect" />
+            <SummaryLink title="04. FIXED ELEMENTS" to="fixed-elements" />
+          </div>
         </Box>
       </Box>
     </Container>
