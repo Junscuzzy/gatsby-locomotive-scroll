@@ -9,7 +9,6 @@ import { RootState } from '../redux/store'
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
-    padding: '0 0 200vh',
   },
 }))
 

@@ -3,9 +3,9 @@ import { Theme, Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
 import Container from '../../container'
-import Locomotive01 from '../../images/locomotive01.jpg'
-import Locomotive02 from '../../images/locomotive02.jpg'
-import Locomotive03 from '../../images/locomotive03.jpg'
+import Locomotive01 from '../../../images/locomotive01.jpg'
+import Locomotive02 from '../../../images/locomotive02.jpg'
+import Locomotive03 from '../../../images/locomotive03.jpg'
 import Grid from '../../Grid'
 import SectionTitle from '../../SectionTitle'
 
