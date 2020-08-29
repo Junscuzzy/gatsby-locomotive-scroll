@@ -21,7 +21,7 @@ const Navbar: FC = () => {
   const classes = useStyles()
 
   return (
-    <Container data-scroll-section>
+    <nav data-scroll-section>
       <Box
         paddingY={6}
         className={classes.root}
@@ -59,7 +59,7 @@ const Navbar: FC = () => {
           </Link>
         </Typography>
       </Box>
-    </Container>
+    </nav>
   )
 }
 
